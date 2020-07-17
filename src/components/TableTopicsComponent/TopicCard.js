@@ -3,6 +3,7 @@ import { Card, Container, Button, Row, Col } from "react-bootstrap";
 import Timer from "./Timer";
 
 const TopicCard = ({ topic, setNumber }) => {
+
   const time = new Date();
   time.setSeconds(time.getSeconds() + 126);
 
