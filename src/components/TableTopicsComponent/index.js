@@ -1,26 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../firebase";
 
 import Table from "./Table";
 import TopicCard from "./TopicCard";
 import SetTopics from "./SetTopics";
 import Layout from "../Layout";
 
-const TableTopicsComponent = () => {
+const TableTopicsComponent = ({ db }) => {
   const [setting, setSetting] = useState(false);
   const [number, setNumber] = useState(0);
-  const [topicObj, setTopicObj] = useState({
-    topic1: "1. Topic not set 😢",
-    topic2: "2. Topic not set 😢",
-    topic3: "3. Topic not set 😢",
-    topic4: "4. Topic not set 😢",
-    topic5: "5. Topic not set 😢",
-    topic6: "6. Topic not set 😢",
-    topic7: "7. Topic not set 😢",
-    topic8: "8. Topic not set 😢",
-    topic9: "9. Topic not set 😢",
-    topic10: "10. Topic not set 😢"
-  });
+  const [topicObj, setTopicObj] = useState({});
 
   const topic = [
     topicObj.topic1,
@@ -65,6 +53,7 @@ const TableTopicsComponent = () => {
           setSetting={setSetting}
           topicObj={topicObj}
           setTopicObj={setTopicObj}
+          db={db}
         />
       ) : number === 0 ? (
         <Table setNumber={setNumber} setSetting={setSetting} />

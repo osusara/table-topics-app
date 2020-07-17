@@ -1,14 +1,15 @@
 import * as firebase from "firebase";
+require("dotenv").config();
 
 const fire = firebase.initializeApp({
-  apiKey: "AIzaSyDf9PUoOM07pp6S_B7ITRB1wAnslFD7gA4",
-  authDomain: "toastmaster-app.firebaseapp.com",
-  databaseURL: "https://toastmaster-app.firebaseio.com",
-  projectId: "toastmaster-app",
-  storageBucket: "toastmaster-app.appspot.com",
-  messagingSenderId: "443243805008",
-  appId: "1:443243805008:web:11b0f56b1eb4e3e3cb1455",
-  measurementId: "G-EH0NY0EZBR",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 });
 
 export const db = fire.firestore();

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Card, Container, Form, Button } from "react-bootstrap";
-import { db } from "../../firebase";
 
-const SetTopics = ({ setSetting, setNumber, topicObj, setTopicObj }) => {
+const SetTopics = ({ db, setSetting, setNumber, topicObj, setTopicObj }) => {
   const [topic, setTopic] = useState(topicObj);
 
   const addTopics = (topic) => db
