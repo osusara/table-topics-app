@@ -11,7 +11,8 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-timer-hook": "^2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

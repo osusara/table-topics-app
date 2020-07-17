@@ -1,10 +1,17 @@
 body {
   height: 100vh;
-  background-color: #f8f9fa;
+  background-color: #fcfcfc;
 }
 
 #root {
   height: 100vh;
+}
+
+input {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  border: none !important;
+  margin-top: 1.2rem !important;
+  height: 2.7rem !important;
 }
 
 .card {
@@ -12,9 +19,47 @@ body {
   border-radius: 0.5rem;
 }
 
+.timer-card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  border: 3px solid #fcfcfc;
+}
+
 .btn {
   border: none;
   border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+}
+
+.btn-light {
+  background: #ffffff;
+  border: 3px solid #fcfcfc;
+}
+
+.btn-light:hover {
+  background: #f1f1f1;
+  border: 3px solid #f3f3f3;
+  scale: 1.02;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.btn-dark {
+  background: #505050;
+}
+
+.btn-dark:hover {
+  background: #606060;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn-secondary {
+  background: #c1c1c1;
+  color: #000000;
+}
+
+.btn-secondary:hover {
+  background: #b1b1b1;
+  color: #000000;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important;
 }
 
 .number-btn {

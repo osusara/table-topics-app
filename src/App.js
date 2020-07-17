@@ -4,7 +4,7 @@ import TableTopicsComponent from "./components/TableTopicsComponent";
 
 function App() {
   return (
-    <div className="bg-light">
+    <div>
       <TableTopicsComponent />
     </div>
   );

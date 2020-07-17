@@ -35,16 +35,6 @@ const TableTopicsComponent = () => {
     topicObj.topic10
   ];
 
-  useEffect(() => {
-    getTopics();
-  }, []);
-
-  db.collection("topics")
-    .doc("topicsList")
-    .onSnapshot(function (doc) {
-      getTopics();
-    });
-
   const getTopics = () => {
     db.collection("topics")
       .doc("topicsList")
@@ -53,7 +43,6 @@ const TableTopicsComponent = () => {
         if (doc.exists) {
           console.log("Document data:", doc.data());
           setTopicObj(doc.data());
-
         } else {
           // doc.data() will be undefined in this case
           console.log("No such document!");
@@ -64,6 +53,10 @@ const TableTopicsComponent = () => {
       });
   };
 
+  useEffect(() => {
+    getTopics();
+  }, []);
+
   return (
     <Layout>
       {setting ? (
@@ -71,6 +64,7 @@ const TableTopicsComponent = () => {
           setNumber={setNumber}
           setSetting={setSetting}
           topicObj={topicObj}
+          setTopicObj={setTopicObj}
         />
       ) : number === 0 ? (
         <Table setNumber={setNumber} setSetting={setSetting} />

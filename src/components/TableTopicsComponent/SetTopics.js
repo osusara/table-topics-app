@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { Card, Container, Form, Button } from "react-bootstrap";
 import { db } from "../../firebase";
 
-const SetTopics = ({ setSetting, setNumber, topicObj }) => {
+const SetTopics = ({ setSetting, setNumber, topicObj, setTopicObj }) => {
   const [topic, setTopic] = useState(topicObj);
 
   const addTopics = (topic) => db
-    .collection("topics")
-    .doc("topicsList")
-    .set(topic)
-    .then(function (docRef) {
-      console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function (error) {
-      console.error("Error adding document: ", error);
-    });
+      .collection("topics")
+      .doc("topicsList")
+      .set(topic)
+      .then(function (docRef) {
+        setTopicObj(topic);
+      })
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+      })
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const SetTopics = ({ setSetting, setNumber, topicObj }) => {
       <Card className="shadow-sm">
         <Card.Body>
           <Card.Title className="text-center">
-            <h2>Set 10 Topics</h2>
+            <h2 className="display-4">Set 10 Topics</h2>
           </Card.Title>
           <Form onSubmit={(e) => onSubmit(e)} className="m-4">
             <Form.Group>
@@ -128,11 +128,13 @@ const SetTopics = ({ setSetting, setNumber, topicObj }) => {
                 onChange={(e) => onChange(e)}
               />
             </Form.Group>
-            <div className="text-center">
-              <Button type="submit" className="btn-dark btn-lg mx-2">
+            <div className="text-center pt-4">
+              <Button type="submit" className="btn-dark mx-2">
                 Submit
               </Button>
-              <Button className="btn-secondary btn-lg mx-2" onClick={() => goBack()}>Back</Button>
+              <Button className="btn-secondary mx-2" onClick={() => goBack()}>
+                Back
+              </Button>
             </div>
           </Form>
         </Card.Body>

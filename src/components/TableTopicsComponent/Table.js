@@ -13,14 +13,14 @@ const Table = ({ setNumber, setSetting }) => {
       <Card className="shadow-sm">
         <Card.Body>
           <Card.Title>
-            <h2 className="text-center">Select a Number</h2>
+            <h2 className="text-center display-4">Select a Number</h2>
           </Card.Title>
           <Row className="mx-auto px-auto my-2 text-center">
-            <Col md={1} className="hidden-xs-down"></Col>
+            <Col md={1} className="d-none d-sm-flex"></Col>
             <Col md={2} xs={6} className="p-2">
               <Button
                 onClick={(e) => onClick(e)}
-                className="btn-primary number-btn"
+                className="btn-light shadow-sm number-btn"
               >
                 1
               </Button>
@@ -28,7 +28,7 @@ const Table = ({ setNumber, setSetting }) => {
             <Col md={2} xs={6} className="p-2">
               <Button
                 onClick={(e) => onClick(e)}
-                className="btn-primary number-btn"
+                className="btn-light shadow-sm number-btn"
               >
                 2
               </Button>
@@ -36,7 +36,7 @@ const Table = ({ setNumber, setSetting }) => {
             <Col md={2} xs={6} className="p-2">
               <Button
                 onClick={(e) => onClick(e)}
-                className="btn-primary number-btn"
+                className="btn-light shadow-sm number-btn"
               >
                 3
               </Button>
@@ -44,7 +44,7 @@ const Table = ({ setNumber, setSetting }) => {
             <Col md={2} xs={6} className="p-2">
               <Button
                 onClick={(e) => onClick(e)}
-                className="btn-primary number-btn"
+                className="btn-light shadow-sm number-btn"
               >
                 4
               </Button>
@@ -52,17 +52,17 @@ const Table = ({ setNumber, setSetting }) => {
             <Col md={2} xs={6} className="p-2">
               <Button
                 onClick={(e) => onClick(e)}
-                className="btn-primary number-btn"
+                className="btn-light shadow-sm number-btn"
               >
                 5
               </Button>
             </Col>
-            <Col md={1} className="hidden-xs-down"></Col>
-            <Col md={1} className="hidden-xs-down"></Col>
+            <Col md={1} className="d-none d-sm-flex"></Col>
+            <Col md={1} className="d-none d-sm-flex"></Col>
             <Col md={2} xs={6} className="p-2">
               <Button
                 onClick={(e) => onClick(e)}
-                className="btn-primary number-btn"
+                className="btn-light shadow-sm number-btn"
               >
                 6
               </Button>
@@ -70,7 +70,7 @@ const Table = ({ setNumber, setSetting }) => {
             <Col md={2} xs={6} className="p-2">
               <Button
                 onClick={(e) => onClick(e)}
-                className="btn-primary number-btn"
+                className="btn-light shadow-sm number-btn"
               >
                 7
               </Button>
@@ -78,7 +78,7 @@ const Table = ({ setNumber, setSetting }) => {
             <Col md={2} xs={6} className="p-2">
               <Button
                 onClick={(e) => onClick(e)}
-                className="btn-primary number-btn"
+                className="btn-light shadow-sm number-btn"
               >
                 8
               </Button>
@@ -86,7 +86,7 @@ const Table = ({ setNumber, setSetting }) => {
             <Col md={2} xs={6} className="p-2">
               <Button
                 onClick={(e) => onClick(e)}
-                className="btn-primary number-btn"
+                className="btn-light shadow-sm number-btn"
               >
                 9
               </Button>
@@ -94,15 +94,15 @@ const Table = ({ setNumber, setSetting }) => {
             <Col md={2} xs={6} className="p-2">
               <Button
                 onClick={(e) => onClick(e)}
-                className="btn-primary number-btn"
+                className="btn-light shadow-sm number-btn"
               >
                 10
               </Button>
             </Col>
-            <Col md={1} className="hidden-xs-down"></Col>
+            <Col md={1} className="d-none d-sm-flex"></Col>
           </Row>
           <div className="text-center mx-auto pt-4">
-            <Button className="btn-lg btn-dark" onClick={() => setTopics()}>
+            <Button className="btn-dark" onClick={() => setTopics()}>
               Set Topics
             </Button>
           </div>
