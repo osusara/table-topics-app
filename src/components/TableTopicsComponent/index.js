@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 import Table from "./Table";
 import TopicCard from "./TopicCard";
 import SetTopics from "./SetTopics";
-import Layout from "../Layout";
+import Rules from "./Rules";
+import ErrorPage from "./ErrorPage";
 
-const TableTopicsComponent = ({ db }) => {
-  const [setting, setSetting] = useState(false);
+const TableTopicsComponent = ({ db, authId }) => {
+  const [page, setPage] = useState("main");
   const [number, setNumber] = useState(0);
   const [topicObj, setTopicObj] = useState({});
 
@@ -20,12 +21,12 @@ const TableTopicsComponent = ({ db }) => {
     topicObj.topic7,
     topicObj.topic8,
     topicObj.topic9,
-    topicObj.topic10
+    topicObj.topic10,
   ];
 
   const getTopics = () => {
     db.collection("topics")
-      .doc("topicsList")
+      .doc(`${authId}`)
       .get()
       .then(function (doc) {
         if (doc.exists) {
@@ -34,10 +35,12 @@ const TableTopicsComponent = ({ db }) => {
         } else {
           // doc.data() will be undefined in this case
           console.log("No such document!");
+          setPage("set");
         }
       })
       .catch(function (error) {
         console.log("Error getting document:", error);
+        setPage(500);
       });
   };
 
@@ -45,22 +48,27 @@ const TableTopicsComponent = ({ db }) => {
     getTopics();
   }, []);
 
-  return (
-    <Layout>
-      {setting ? (
-        <SetTopics
-          setNumber={setNumber}
-          setSetting={setSetting}
-          topicObj={topicObj}
-          setTopicObj={setTopicObj}
-          db={db}
-        />
-      ) : number === 0 ? (
-        <Table setNumber={setNumber} setSetting={setSetting} />
-      ) : (
-        <TopicCard topic={topic[number - 1]} setNumber={setNumber} />
-      )}
-    </Layout>
+  return page === "set" ? (
+    <SetTopics
+      setNumber={setNumber}
+      setPage={setPage}
+      topicObj={topicObj}
+      setTopicObj={setTopicObj}
+      authId={authId}
+      db={db}
+    />
+  ) : page === "main" ? (
+    <Table setNumber={setNumber} setPage={setPage} />
+  ) : page === "view" ? (
+    <TopicCard
+      topic={topic[number - 1]}
+      setNumber={setNumber}
+      setPage={setPage}
+    />
+  ) : page === "rules" ? (
+    <Rules setPage={setPage} />
+  ) : (
+    <ErrorPage page={page} />
   );
 };
 

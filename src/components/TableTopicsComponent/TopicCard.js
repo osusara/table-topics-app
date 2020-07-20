@@ -2,8 +2,7 @@ import React from "react";
 import { Card, Container, Button, Row, Col } from "react-bootstrap";
 import Timer from "./Timer";
 
-const TopicCard = ({ topic, setNumber }) => {
-
+const TopicCard = ({ topic, setNumber, setPage }) => {
   const time = new Date();
   time.setSeconds(time.getSeconds() + 126);
 
@@ -17,7 +16,13 @@ const TopicCard = ({ topic, setNumber }) => {
               <Timer expiryTimestamp={time} />
             </Col>
           </Row>
-          <Button onClick={() => setNumber(0)} className="btn-dark mt-4">
+          <Button
+            onClick={() => {
+              setNumber(0);
+              setPage("main");
+            }}
+            className="btn-dark mt-4"
+          >
             Return
           </Button>
         </Card.Body>

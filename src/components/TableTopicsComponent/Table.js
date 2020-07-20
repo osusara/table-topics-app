@@ -1,10 +1,13 @@
 import React from "react";
 import { Row, Col, Button, Container, Card } from "react-bootstrap";
 
-const Table = ({ setNumber, setSetting }) => {
-  const onClick = (e) => setNumber(e.target.innerHTML);
+const Table = ({ setNumber, setPage }) => {
+  const onClick = (e) => {
+    setNumber(e.target.innerHTML)
+    setPage("view");
+  };
   const setTopics = () => {
-    setSetting(true);
+    setPage("set");
     setNumber(0);
   };
 
@@ -102,8 +105,11 @@ const Table = ({ setNumber, setSetting }) => {
             <Col md={1} className="d-none d-sm-flex"></Col>
           </Row>
           <div className="text-center mx-auto pt-4">
-            <Button className="btn-dark" onClick={() => setTopics()}>
+            <Button className="btn-dark mx-2" onClick={() => setTopics()}>
               Set Topics
+            </Button>
+            <Button className="btn-secondary mx-2" onClick={() => setPage("rules")}>
+              Instructions
             </Button>
           </div>
         </Card.Body>

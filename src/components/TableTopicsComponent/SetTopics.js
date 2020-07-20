@@ -1,35 +1,39 @@
 import React, { useState } from "react";
 import { Card, Container, Form, Button } from "react-bootstrap";
 
-const SetTopics = ({ db, setSetting, setNumber, topicObj, setTopicObj }) => {
+import ErrorPage from "./ErrorPage";
+
+const SetTopics = ({ db, setPage, setNumber, topicObj, setTopicObj, authId }) => {
   const [topic, setTopic] = useState(topicObj);
 
-  const addTopics = (topic) => db
+  const addTopics = (topic) =>
+    db
       .collection("topics")
-      .doc("topicsList")
+      .doc(`${authId}`)
       .set(topic)
       .then(function (docRef) {
         setTopicObj(topic);
       })
       .catch(function (error) {
         console.error("Error adding document: ", error);
-      })
+      });
 
   const onSubmit = (e) => {
     e.preventDefault();
     addTopics(topic);
     setNumber(0);
-    setSetting(false);
-  }
+    setPage("main");
+  };
 
   const goBack = () => {
     setNumber(0);
-    setSetting(false);
-  }
+    setPage("main");
+  };
 
-  const onChange = (e) => setTopic({ ...topic, [e.target.name]: e.target.value });
+  const onChange = (e) =>
+    setTopic({ ...topic, [e.target.name]: e.target.value });
 
-  return (
+  return authId ? (
     <Container className="m-5 mx-auto">
       <Card className="shadow-sm">
         <Card.Body>
@@ -139,6 +143,8 @@ const SetTopics = ({ db, setSetting, setNumber, topicObj, setTopicObj }) => {
         </Card.Body>
       </Card>
     </Container>
+  ) : (
+    <ErrorPage page={300} />
   );
 };
 
