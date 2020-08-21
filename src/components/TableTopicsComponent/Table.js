@@ -2,10 +2,12 @@ import React from "react";
 import { Row, Col, Button, Container, Card } from "react-bootstrap";
 
 const Table = ({ setNumber, setPage }) => {
+
   const onClick = (e) => {
     setNumber(e.target.innerHTML)
     setPage("view");
   };
+
   const setTopics = () => {
     setPage("set");
     setNumber(0);
@@ -108,7 +110,10 @@ const Table = ({ setNumber, setPage }) => {
             <Button className="btn-dark mx-2" onClick={() => setTopics()}>
               Set Topics
             </Button>
-            <Button className="btn-secondary mx-2" onClick={() => setPage("rules")}>
+            <Button
+              className="btn-secondary mx-2"
+              onClick={() => setPage("rules")}
+            >
               Instructions
             </Button>
           </div>

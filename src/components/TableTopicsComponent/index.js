@@ -30,7 +30,6 @@ const TableTopicsComponent = ({ db, authId }) => {
       .get()
       .then(function (doc) {
         if (doc.exists) {
-          console.log("Document data:", doc.data());
           setTopicObj(doc.data());
         } else {
           // doc.data() will be undefined in this case
