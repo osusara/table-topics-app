@@ -1,4 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
+import { Container, Spinner } from "react-bootstrap";
 
 const Table = lazy(() => import("./Table"));
 const TopicCard = lazy(() => import("./TopicCard"));
@@ -47,7 +48,11 @@ const TableTopicsComponent = ({ db, authId }) => {
     getTopics();
   }, []);
 
-  const renderLoader = () => <p>Loading</p>;
+  const renderLoader = () => (
+    <Container className="my-5 text-center">
+      <Spinner animation="border" className="my-5 mx-auto" />
+    </Container>
+  );
 
   return (
     <Suspense fallback={renderLoader()}>
