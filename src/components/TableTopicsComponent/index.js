@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 
-import Table from "./Table";
-import TopicCard from "./TopicCard";
-import SetTopics from "./SetTopics";
-import Rules from "./Rules";
-import ErrorPage from "./ErrorPage";
+const Table = lazy(() => import("./Table"));
+const TopicCard = lazy(() => import("./TopicCard"));
+const SetTopics = lazy(() => import("./SetTopics"));
+const Rules = lazy(() => import("./Rules"));
+const ErrorPage = lazy(() => import("./ErrorPage"));
 
 const TableTopicsComponent = ({ db, authId }) => {
   const [page, setPage] = useState("main");
@@ -47,27 +47,33 @@ const TableTopicsComponent = ({ db, authId }) => {
     getTopics();
   }, []);
 
-  return page === "set" ? (
-    <SetTopics
-      setNumber={setNumber}
-      setPage={setPage}
-      topicObj={topicObj}
-      setTopicObj={setTopicObj}
-      authId={authId}
-      db={db}
-    />
-  ) : page === "main" ? (
-    <Table setNumber={setNumber} setPage={setPage} />
-  ) : page === "view" ? (
-    <TopicCard
-      topic={topic[number - 1]}
-      setNumber={setNumber}
-      setPage={setPage}
-    />
-  ) : page === "rules" ? (
-    <Rules setPage={setPage} />
-  ) : (
-    <ErrorPage page={page} />
+  const renderLoader = () => <p>Loading</p>;
+
+  return (
+    <Suspense fallback={renderLoader()}>
+      {page === "set" ? (
+        <SetTopics
+          setNumber={setNumber}
+          setPage={setPage}
+          topicObj={topicObj}
+          setTopicObj={setTopicObj}
+          authId={authId}
+          db={db}
+        />
+      ) : page === "main" ? (
+        <Table setNumber={setNumber} setPage={setPage} />
+      ) : page === "view" ? (
+        <TopicCard
+          topic={topic[number - 1]}
+          setNumber={setNumber}
+          setPage={setPage}
+        />
+      ) : page === "rules" ? (
+        <Rules setPage={setPage} />
+      ) : (
+        <ErrorPage page={page} />
+      )}
+    </Suspense>
   );
 };
 
