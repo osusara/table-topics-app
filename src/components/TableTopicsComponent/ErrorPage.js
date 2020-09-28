@@ -1,15 +1,22 @@
 import React from "react";
 import { Container, Card } from "react-bootstrap";
+import { useSpring, animated } from "react-spring";
 
 const ErrorPage = ({ page }) => {
-  return page === 500 ? (
-    <ServerError page={page} />
-  ) : page === 404 ? (
-    <NotFoundError page={page} />
-  ) : page === 300 ?(
-    <AuthError page={page} />
-  ) : (
-    <UnknownError />
+  const anim = useSpring({ opacity: 1, from: { opacity: 0 } });
+
+  return (
+    <animated.div style={anim}>
+      {page === 500 ? (
+        <ServerError page={page} />
+      ) : page === 404 ? (
+        <NotFoundError page={page} />
+      ) : page === 300 ? (
+        <AuthError page={page} />
+      ) : (
+        <UnknownError />
+      )}
+    </animated.div>
   );
 };
 
